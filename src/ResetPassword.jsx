@@ -85,7 +85,7 @@ function ResetPassword() {
                 </div>
             ) : (
                 <div className='flex flex-col items-center justify-center space-y-4 md:w-3/4 lg:w-1/2'>
-                    <h1 className='text-4xl font-bold text-center'>Comnectar Password Reset</h1>
+                    <h1 className='text-4xl font-bold text-center'>Comnecter Password Reset</h1>
                     <p className='text-sm'>Enter your password to reset it</p>
                     <label className="input w-full">
                         <input type="password" name='password' placeholder="Password" className='w-full' value={password} onChange={(e) => setPassword(e.target.value)} />
