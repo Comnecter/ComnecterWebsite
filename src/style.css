@@ -7,3 +7,78 @@
 body {
     padding: 10px;
 }
+
+/* Ensure text is visible in light mode */
+:root {
+    --text-primary: #1a1a1a;
+    --text-secondary: #333333;
+    --text-tertiary: #4a4a4a;
+}
+
+/* Make all text dark and readable in light mode */
+body,
+p,
+span,
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+label,
+button,
+a {
+    color: var(--text-primary);
+}
+
+/* Specific styling for subscription/pricing text (weekly, monthly, 3 months, 6 months, yearly) */
+[class*="weekly"],
+[class*="monthly"],
+[class*="yearly"],
+[class*="months"] {
+    color: var(--text-primary) !important;
+    font-weight: 500;
+}
+
+/* Ensure text in light mode is always dark */
+@media (prefers-color-scheme: light) {
+    body,
+    p,
+    span,
+    div,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    label,
+    button:not([class*="btn-primary"]):not([class*="btn-secondary"]):not([class*="accent"]),
+    a:not([style*="color"]) {
+        color: #1a1a1a !important;
+    }
+    
+    /* Override any light text colors in light mode */
+    .text-gray-300,
+    .text-gray-400,
+    .text-gray-500,
+    .text-white,
+    .text-light {
+        color: #1a1a1a !important;
+    }
+}
+
+/* Ensure DaisyUI components have readable text in light mode */
+.btn:not(.btn-primary):not(.btn-secondary):not([class*="accent"]) {
+    color: var(--text-primary);
+}
+
+/* Make sure any subscription duration text is visible */
+.text-subscription,
+.subscription-text,
+.duration-text,
+.billing-period {
+    color: #1a1a1a !important;
+    font-weight: 500;
+}

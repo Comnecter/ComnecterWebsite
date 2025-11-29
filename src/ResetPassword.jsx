@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { verifyPasswordResetCode, confirmPasswordReset } from "firebase/auth";
+import { app, firebaseConfig } from "./firebase.config";
 
 function ResetPassword() {
     const [password, setPassword] = useState('')
@@ -34,16 +35,46 @@ function ResetPassword() {
         try {
             setResettingPwd(true)
             const mode = getParameterByName('mode');
-            const apiKey = getParameterByName('apiKey');
+            const apiKeyFromUrl = getParameterByName('apiKey');
             const actionCode = getParameterByName('oobCode');
             const continueUrl = getParameterByName('continueUrl');
             const lang = getParameterByName('lang') || 'en';
 
-            const config = {
-                'apiKey': apiKey // Copy this key from the web initialization
-            };
-            const app = initializeApp(config);
-            const auth = getAuth(app);
+            // Use API key from URL (Firebase email link) or from environment variables
+            let firebaseApp = app;
+            
+            // Priority: Use API key from URL if present (Firebase sends this in reset links)
+            if (apiKeyFromUrl) {
+                try {
+                    // Try to use existing app if API keys match
+                    if (app && firebaseConfig.apiKey === apiKeyFromUrl) {
+                        firebaseApp = app;
+                    } else {
+                        // Initialize new app instance with URL API key
+                        const config = { 'apiKey': apiKeyFromUrl };
+                        firebaseApp = initializeApp(config, 'reset-password-instance');
+                    }
+                } catch (error) {
+                    // If app already exists, get it
+                    const config = { 'apiKey': apiKeyFromUrl };
+                    firebaseApp = initializeApp(config, 'reset-password-instance');
+                }
+            } else if (app && firebaseConfig.apiKey) {
+                // Use the configured Firebase app from environment variables
+                firebaseApp = app;
+            } else {
+                setErrorMsg('Firebase configuration is missing. Please check your environment variables or use a valid reset link.');
+                setResettingPwd(false);
+                return;
+            }
+
+            if (!actionCode) {
+                setErrorMsg('Invalid reset link. Missing action code.');
+                setResettingPwd(false);
+                return;
+            }
+
+            const auth = getAuth(firebaseApp);
 
             await verifyPasswordResetCode(auth, actionCode).then((email) => {
                 const accountEmail = email;
