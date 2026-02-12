@@ -17,9 +17,7 @@ function getMobilePlatform() {
 }
 
 const colors = {
-  primary: '#3E64FF',
-  accent: '#FFC857',
-  darkBg: '#121212',
+  primary: '#2563eb',
   white: '#FFFFFF',
 };
 

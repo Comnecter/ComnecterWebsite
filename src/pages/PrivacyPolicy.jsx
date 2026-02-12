@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import MobileStoreBanner from '../components/MobileStoreBanner';
+import NavBar from '../components/NavBar';
 
 const colors = {
-  primary: '#3E64FF',
-  secondary: '#5EDFFF',
-  accent: '#FFC857',
-  darkBg: '#121212',
-  textPrimary: '#1a1a1a',
-  textSecondary: '#333333',
+  primary: '#2563eb',
+  accent: '#f59e0b',
+  darkBg: '#0f172a',
+  textPrimary: '#0f172a',
+  textSecondary: '#475569',
   white: '#FFFFFF',
 };
 
@@ -30,29 +30,7 @@ function PrivacyPolicy() {
   return (
     <div style={{ minHeight: '100vh', background: '#fff' }}>
       <MobileStoreBanner />
-      <header
-        style={{
-          background: `linear-gradient(to right, ${colors.primary}, ${colors.secondary})`,
-          color: colors.white,
-          padding: '1.5rem 1.5rem',
-          boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-        }}
-      >
-        <div style={{ maxWidth: '800px', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem' }}>
-          <Link to="/" style={{ color: colors.white, textDecoration: 'none', fontSize: '1.5rem', fontWeight: 700 }}>
-            Comnecter
-          </Link>
-          <nav style={{ display: 'flex', gap: '1.25rem' }}>
-            <Link to="/terms-of-service" style={{ ...linkStyle, color: colors.white, opacity: 0.95 }}>
-              Terms of Service
-            </Link>
-            <Link to="/" style={{ ...linkStyle, color: colors.white, opacity: 0.95 }}>
-              Home
-            </Link>
-          </nav>
-        </div>
-      </header>
-
+      <NavBar />
       <main style={sectionStyle}>
         <h1 style={heading1Style}>Privacy Policy for Comnecter Mobile App</h1>
         <p style={{ color: colors.textSecondary, marginBottom: '2rem' }}>
