@@ -1,13 +1,13 @@
-// Project: Comnecter Website
-// Stack: React + Vite + Framer Motion + React Router
-import React from 'react';
+// Project: Comnecter Website – Upgraded
+import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import MobileStoreBanner from './components/MobileStoreBanner';
 import NavBar from './components/NavBar';
 
 const colors = {
   primary: '#2563eb',
+  primaryDark: '#1d4ed8',
   secondary: '#0ea5e9',
   accent: '#f59e0b',
   lightBg: '#f8fafc',
@@ -18,144 +18,272 @@ const colors = {
 };
 
 const container = { maxWidth: '1100px', margin: '0 auto', padding: '0 1.5rem' };
+const sectionPad = { padding: 'clamp(3rem, 6vw, 5rem) 1.5rem' };
 
-const fadeUp = {
-  initial: { opacity: 0, y: 24 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.5 },
-};
+function AnimatedSection({ children, className = '' }) {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: '-80px' });
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 32 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+}
 
 function Hero() {
   return (
     <section
+      id="hero"
       style={{
-        background: `linear-gradient(135deg, ${colors.primary} 0%, ${colors.secondary} 100%)`,
+        position: 'relative',
+        minHeight: '90vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        background: `linear-gradient(145deg, ${colors.primary} 0%, #1d4ed8 40%, ${colors.secondary} 100%)`,
         color: colors.white,
-        padding: '4rem 1.5rem 5rem',
-        textAlign: 'center',
+        overflow: 'hidden',
       }}
     >
-      <div style={container}>
-        <motion.h1
-          {...fadeUp}
-          transition={{ delay: 0.1, duration: 0.5 }}
+      <div
+        style={{
+          position: 'absolute',
+          inset: 0,
+          background: 'radial-gradient(ellipse 80% 50% at 50% 120%, rgba(255,255,255,0.12) 0%, transparent 50%)',
+          pointerEvents: 'none',
+        }}
+      />
+      <div style={{ ...container, position: 'relative', zIndex: 1, textAlign: 'center' }}>
+        <motion.span
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.4 }}
           style={{
-            fontSize: 'clamp(2.25rem, 5vw, 3.5rem)',
-            fontWeight: 700,
+            display: 'inline-block',
+            padding: '0.35rem 0.9rem',
+            background: 'rgba(255,255,255,0.2)',
+            borderRadius: '9999px',
+            fontSize: '0.85rem',
+            fontWeight: 600,
+            letterSpacing: '0.02em',
+            marginBottom: '1.25rem',
+          }}
+        >
+          The social radar for the real world
+        </motion.span>
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 0.5 }}
+          style={{
+            fontSize: 'clamp(2.5rem, 6vw, 4rem)',
+            fontWeight: 800,
+            letterSpacing: '-0.03em',
+            lineHeight: 1.1,
             marginBottom: '1rem',
-            letterSpacing: '-0.02em',
-            lineHeight: 1.15,
           }}
         >
           Comnecter
         </motion.h1>
         <motion.p
-          {...fadeUp}
-          transition={{ delay: 0.2, duration: 0.5 }}
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.45, duration: 0.5 }}
           style={{
-            fontSize: '1.2rem',
-            maxWidth: '560px',
+            fontSize: 'clamp(1.1rem, 2vw, 1.35rem)',
+            maxWidth: '520px',
             margin: '0 auto 2rem',
             opacity: 0.95,
             lineHeight: 1.6,
           }}
         >
-          Discover and connect with people nearby. The social radar for the real world.
+          Discover and connect with people nearby. Build real friendships, in person.
         </motion.p>
-        <motion.a
-          href="https://play.google.com/store/apps/details?id=com.comnecter.mobile.production"
-          target="_blank"
-          rel="noopener noreferrer"
-          {...fadeUp}
-          transition={{ delay: 0.3, duration: 0.5 }}
-          whileHover={{ scale: 1.03 }}
-          whileTap={{ scale: 0.98 }}
-          style={{
-            display: 'inline-block',
-            padding: '0.875rem 1.75rem',
-            background: colors.white,
-            color: colors.primary,
-            borderRadius: '0.5rem',
-            fontWeight: 600,
-            textDecoration: 'none',
-            boxShadow: '0 4px 14px rgba(0,0,0,0.15)',
-          }}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 0.4 }}
+          style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', justifyContent: 'center', alignItems: 'center' }}
         >
-          Get the app
-        </motion.a>
+          <motion.a
+            href="https://play.google.com/store/apps/details?id=com.comnecter.mobile.production"
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.98 }}
+            style={{
+              display: 'inline-block',
+              padding: '0.9rem 1.75rem',
+              background: colors.white,
+              color: colors.primary,
+              borderRadius: '0.5rem',
+              fontWeight: 700,
+              textDecoration: 'none',
+              boxShadow: '0 4px 20px rgba(0,0,0,0.2)',
+            }}
+          >
+            Get the app
+          </motion.a>
+          <motion.a
+            href="#how-it-works"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            style={{
+              display: 'inline-block',
+              padding: '0.9rem 1.5rem',
+              background: 'transparent',
+              color: colors.white,
+              border: '2px solid rgba(255,255,255,0.7)',
+              borderRadius: '0.5rem',
+              fontWeight: 600,
+              textDecoration: 'none',
+            }}
+          >
+            How it works
+          </motion.a>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.2, duration: 0.5 }}
+          style={{ marginTop: '3rem' }}
+        >
+          <a
+            href="#how-it-works"
+            style={{
+              display: 'inline-flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              color: 'rgba(255,255,255,0.8)',
+              textDecoration: 'none',
+              fontSize: '0.8rem',
+              fontWeight: 500,
+            }}
+          >
+            <span style={{ marginBottom: '0.25rem' }}>Scroll to explore</span>
+            <motion.span
+              animate={{ y: [0, 6, 0] }}
+              transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
+            >
+              ↓
+            </motion.span>
+          </a>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+const steps = [
+  { step: '1', title: 'Open the app', text: 'Allow location (you stay in control). Comnecter shows you who’s nearby in a safe, transparent way.' },
+  { step: '2', title: 'See who’s around', text: 'Browse nearby people and their interests. No spam—just real profiles of people in your area.' },
+  { step: '3', title: 'Connect in person', text: 'Send a request, chat in the app, and meet up. Turn online connection into real friendship.' },
+];
+
+function HowItWorks() {
+  return (
+    <section id="how-it-works" style={{ ...sectionPad, background: colors.white }}>
+      <div style={container}>
+        <AnimatedSection>
+          <p style={{ color: colors.primary, fontWeight: 600, fontSize: '0.9rem', marginBottom: '0.5rem', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+            Simple as 1-2-3
+          </p>
+          <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.25rem)', fontWeight: 700, color: colors.textPrimary, marginBottom: '2.5rem' }}>
+            How it works
+          </h2>
+        </AnimatedSection>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '2rem' }}>
+          {steps.map((item, i) => (
+            <AnimatedSection key={item.step}>
+              <motion.div
+                style={{
+                  padding: '1.75rem',
+                  background: colors.lightBg,
+                  borderRadius: '1rem',
+                  border: '1px solid rgba(0,0,0,0.06)',
+                  height: '100%',
+                }}
+                whileHover={{ y: -4, boxShadow: '0 12px 24px rgba(0,0,0,0.08)' }}
+                transition={{ duration: 0.2 }}
+              >
+                <span
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    width: '2.5rem',
+                    height: '2.5rem',
+                    borderRadius: '0.5rem',
+                    background: colors.primary,
+                    color: colors.white,
+                    fontWeight: 700,
+                    fontSize: '1.1rem',
+                    marginBottom: '1rem',
+                  }}
+                >
+                  {item.step}
+                </span>
+                <h3 style={{ fontSize: '1.2rem', fontWeight: 700, color: colors.textPrimary, marginBottom: '0.5rem' }}>
+                  {item.title}
+                </h3>
+                <p style={{ fontSize: '0.95rem', color: colors.textSecondary, lineHeight: 1.6, margin: 0 }}>
+                  {item.text}
+                </p>
+              </motion.div>
+            </AnimatedSection>
+          ))}
+        </div>
       </div>
     </section>
   );
 }
 
 const features = [
-  {
-    title: 'Real-time radar',
-    description: 'Find people nearby and see who’s around you in a safe, transparent way.',
-    icon: '🔍',
-  },
-  {
-    title: 'Natural networking',
-    description: 'Build real connections through mutual interests and local discovery.',
-    icon: '🤝',
-  },
-  {
-    title: 'Mobile-first',
-    description: 'Designed for how you move. Use it on the go, anywhere.',
-    icon: '📱',
-  },
-  {
-    title: 'Privacy-first',
-    description: 'You control what you share. We keep your data safe and minimal.',
-    icon: '🔒',
-  },
+  { title: 'Real-time radar', description: 'See who’s nearby in a safe, transparent way. No guessing—just real people around you.', icon: '🔍' },
+  { title: 'Natural networking', description: 'Build friendships through mutual interests and local discovery, not endless scrolling.', icon: '🤝' },
+  { title: 'Mobile-first', description: 'Designed for life on the go. Use it anywhere, anytime.', icon: '📱' },
+  { title: 'Privacy-first', description: 'You control what you share. We keep your data safe and minimal.', icon: '🔒' },
 ];
 
 function Features() {
   return (
-    <section style={{ padding: '4rem 1.5rem', background: colors.lightBg }}>
+    <section style={{ ...sectionPad, background: colors.lightBg }}>
       <div style={container}>
-        <motion.h2
-          {...fadeUp}
-          style={{
-            fontSize: '1.75rem',
-            fontWeight: 700,
-            color: colors.textPrimary,
-            textAlign: 'center',
-            marginBottom: '2.5rem',
-          }}
-        >
-          Why Comnecter?
-        </motion.h2>
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-            gap: '1.5rem',
-          }}
-        >
+        <AnimatedSection>
+          <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.25rem)', fontWeight: 700, color: colors.textPrimary, textAlign: 'center', marginBottom: '2.5rem' }}>
+            Why Comnecter?
+          </h2>
+        </AnimatedSection>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.5rem' }}>
           {features.map((item, i) => (
-            <motion.div
-              key={item.title}
-              {...fadeUp}
-              transition={{ delay: 0.1 * i, duration: 0.4 }}
-              whileHover={{ y: -4 }}
-              style={{
-                padding: '1.5rem',
-                background: colors.white,
-                borderRadius: '0.75rem',
-                boxShadow: '0 1px 3px rgba(0,0,0,0.08)',
-                border: '1px solid rgba(0,0,0,0.06)',
-              }}
-            >
-              <div style={{ fontSize: '1.75rem', marginBottom: '0.75rem' }}>{item.icon}</div>
-              <h3 style={{ fontSize: '1.1rem', fontWeight: 600, color: colors.textPrimary, marginBottom: '0.5rem' }}>
-                {item.title}
-              </h3>
-              <p style={{ fontSize: '0.95rem', color: colors.textSecondary, lineHeight: 1.5, margin: 0 }}>
-                {item.description}
-              </p>
-            </motion.div>
+            <AnimatedSection key={item.title}>
+              <motion.div
+                style={{
+                  padding: '1.75rem',
+                  background: colors.white,
+                  borderRadius: '1rem',
+                  boxShadow: '0 1px 3px rgba(0,0,0,0.06)',
+                  border: '1px solid rgba(0,0,0,0.05)',
+                  height: '100%',
+                }}
+                whileHover={{ y: -4, boxShadow: '0 12px 28px rgba(0,0,0,0.1)' }}
+                transition={{ duration: 0.2 }}
+              >
+                <div style={{ fontSize: '2rem', marginBottom: '0.75rem' }}>{item.icon}</div>
+                <h3 style={{ fontSize: '1.15rem', fontWeight: 700, color: colors.textPrimary, marginBottom: '0.5rem' }}>
+                  {item.title}
+                </h3>
+                <p style={{ fontSize: '0.95rem', color: colors.textSecondary, lineHeight: 1.6, margin: 0 }}>
+                  {item.description}
+                </p>
+              </motion.div>
+            </AnimatedSection>
           ))}
         </div>
       </div>
@@ -165,27 +293,114 @@ function Features() {
 
 function Quote() {
   return (
-    <section style={{ padding: '4rem 1.5rem', background: colors.white }}>
+    <section style={{ ...sectionPad, background: `linear-gradient(135deg, ${colors.primary} 0%, ${colors.secondary} 100%)`, color: colors.white }}>
       <div style={container}>
-        <motion.div
-          {...fadeUp}
-          style={{
-            maxWidth: '640px',
-            margin: '0 auto',
-            padding: '2.5rem',
-            background: colors.lightBg,
-            borderRadius: '1rem',
-            border: '1px solid rgba(0,0,0,0.06)',
-            textAlign: 'center',
-          }}
-        >
-          <p style={{ fontSize: '1.35rem', fontWeight: 500, color: colors.textPrimary, marginBottom: '0.75rem', lineHeight: 1.5 }}>
+        <AnimatedSection>
+          <blockquote
+            style={{
+              maxWidth: '640px',
+              margin: '0 auto',
+              textAlign: 'center',
+              fontSize: 'clamp(1.25rem, 2.5vw, 1.6rem)',
+              fontWeight: 600,
+              lineHeight: 1.5,
+              opacity: 0.98,
+            }}
+          >
             “A bridge between online and offline connection.”
-          </p>
-          <p style={{ fontSize: '0.95rem', color: colors.textSecondary, fontStyle: 'italic' }}>
+          </blockquote>
+          <p style={{ marginTop: '1rem', fontSize: '0.95rem', opacity: 0.9, fontStyle: 'italic' }}>
             — The Comnecter Team
           </p>
-        </motion.div>
+        </AnimatedSection>
+      </div>
+    </section>
+  );
+}
+
+const faqs = [
+  { q: 'Is Comnecter free?', a: 'You can download and use core features for free. Some premium features may require a subscription.' },
+  { q: 'How does the radar work?', a: 'With your permission, Comnecter uses your device’s location to show you other users who are nearby. You control what you share and with whom.' },
+  { q: 'Is my data safe?', a: 'Yes. We use encryption and follow privacy best practices. Location data is automatically deleted after 30 days. See our Privacy Policy for details.' },
+  { q: 'Where is Comnecter available?', a: 'Comnecter is gradually becoming available across regions and devices. Click the "Get the App" button to check your store and see whether it is currently accessible for your device.' },
+];
+
+function FAQ() {
+  return (
+    <section style={{ ...sectionPad, background: colors.white }}>
+      <div style={container}>
+        <AnimatedSection>
+          <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.25rem)', fontWeight: 700, color: colors.textPrimary, textAlign: 'center', marginBottom: '2rem' }}>
+            Frequently asked questions
+          </h2>
+        </AnimatedSection>
+        <div style={{ maxWidth: '640px', margin: '0 auto' }}>
+          {faqs.map((item, i) => (
+            <AnimatedSection key={item.q}>
+              <div
+                style={{
+                  padding: '1.25rem 0',
+                  borderBottom: i < faqs.length - 1 ? '1px solid rgba(0,0,0,0.08)' : 'none',
+                }}
+              >
+                <h3 style={{ fontSize: '1.05rem', fontWeight: 600, color: colors.textPrimary, marginBottom: '0.5rem' }}>
+                  {item.q}
+                </h3>
+                <p style={{ fontSize: '0.95rem', color: colors.textSecondary, lineHeight: 1.6, margin: 0 }}>
+                  {item.a}
+                </p>
+              </div>
+            </AnimatedSection>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function CTA() {
+  return (
+    <section style={{ ...sectionPad, background: colors.lightBg }}>
+      <div style={container}>
+        <AnimatedSection>
+          <div
+            style={{
+              textAlign: 'center',
+              padding: '3rem 2rem',
+              background: colors.white,
+              borderRadius: '1.25rem',
+              boxShadow: '0 4px 24px rgba(0,0,0,0.06)',
+              border: '1px solid rgba(0,0,0,0.05)',
+            }}
+          >
+            <h2 style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)', fontWeight: 700, color: colors.textPrimary, marginBottom: '0.75rem' }}>
+              Ready to connect?
+            </h2>
+            <p style={{ fontSize: '1rem', color: colors.textSecondary, marginBottom: '1.5rem', maxWidth: '400px', margin: '0 auto 1.5rem' }}>
+              Download Comnecter and start meeting people nearby today.
+            </p>
+            <motion.a
+              href="https://play.google.com/store/apps/details?id=com.comnecter.mobile.production"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.98 }}
+              style={{
+                display: 'inline-block',
+                padding: '1rem 2rem',
+                background: colors.primary,
+                color: colors.white,
+                borderRadius: '0.5rem',
+                fontWeight: 700,
+                fontSize: '1.05rem',
+                textDecoration: 'none',
+                boxShadow: '0 4px 14px rgba(37, 99, 235, 0.4)',
+              }}
+            >
+              Get the app
+            </motion.a>
+          </div>
+        </AnimatedSection>
       </div>
     </section>
   );
@@ -197,34 +412,59 @@ function Footer() {
       style={{
         background: colors.darkBg,
         color: colors.white,
-        padding: '2.5rem 1.5rem',
-        textAlign: 'center',
-        fontSize: '0.95rem',
+        padding: '3rem 1.5rem 2rem',
       }}
     >
-      <div style={container}>
-        <p style={{ margin: 0, fontWeight: 600 }}>Comnecter B.V.</p>
-        <p style={{ margin: '0.25rem 0 0', opacity: 0.9 }}>Chamber of Commerce: 94191891 | VAT: NL866672291B01</p>
-        <p style={{ margin: '0.5rem 0 0' }}>
-          <a href="mailto:info@comnecter.com" style={{ color: colors.accent, textDecoration: 'none' }}>info@comnecter.com</a>
-          {' · '}
-          <a href="tel:+31687718383" style={{ color: colors.accent, textDecoration: 'none' }}>+31 6 87 71 83 83</a>
-        </p>
-        <p style={{ marginTop: '1rem' }}>
-          <Link to="/privacy-policy" style={{ color: colors.accent, textDecoration: 'none' }}>Privacy Policy</Link>
-          {' · '}
-          <Link to="/terms-of-service" style={{ color: colors.accent, textDecoration: 'none' }}>Terms of Service</Link>
-        </p>
-        <p style={{ marginTop: '1rem' }}>
+      <div style={{ ...container, maxWidth: '1100px' }}>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+            gap: '2rem',
+            marginBottom: '2.5rem',
+          }}
+        >
+          <div>
+            <p style={{ fontWeight: 700, fontSize: '1.1rem', marginBottom: '0.5rem' }}>Comnecter</p>
+            <p style={{ fontSize: '0.9rem', opacity: 0.85, margin: 0 }}>
+              The social radar for the real world.
+            </p>
+          </div>
+          <div>
+            <p style={{ fontWeight: 600, fontSize: '0.9rem', marginBottom: '0.5rem' }}>Company</p>
+            <p style={{ fontSize: '0.9rem', opacity: 0.9, margin: 0 }}>Comnecter B.V.</p>
+            <p style={{ fontSize: '0.85rem', opacity: 0.8, margin: '0.25rem 0 0' }}>Chamber of Commerce: 94191891</p>
+            <p style={{ fontSize: '0.85rem', opacity: 0.8, margin: '0.15rem 0 0' }}>VAT: NL866672291B01</p>
+          </div>
+          <div>
+            <p style={{ fontWeight: 600, fontSize: '0.9rem', marginBottom: '0.5rem' }}>Contact</p>
+            <p style={{ margin: 0 }}>
+              <a href="mailto:info@comnecter.com" style={{ color: colors.accent, textDecoration: 'none', fontSize: '0.9rem' }}>info@comnecter.com</a>
+            </p>
+            <p style={{ margin: '0.25rem 0 0' }}>
+              <a href="tel:+31687718383" style={{ color: colors.accent, textDecoration: 'none', fontSize: '0.9rem' }}>+31 6 87 71 83 83</a>
+            </p>
+          </div>
+          <div>
+            <p style={{ fontWeight: 600, fontSize: '0.9rem', marginBottom: '0.5rem' }}>Legal</p>
+            <p style={{ margin: 0 }}>
+              <Link to="/privacy-policy" style={{ color: colors.accent, textDecoration: 'none', fontSize: '0.9rem' }}>Privacy Policy</Link>
+            </p>
+            <p style={{ margin: '0.25rem 0 0' }}>
+              <Link to="/terms-of-service" style={{ color: colors.accent, textDecoration: 'none', fontSize: '0.9rem' }}>Terms of Service</Link>
+            </p>
+          </div>
+        </div>
+        <div style={{ paddingTop: '1.5rem', borderTop: '1px solid rgba(255,255,255,0.1)', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '1rem' }}>
+          <p style={{ margin: 0, fontSize: '0.9rem', opacity: 0.8 }}>&copy; {new Date().getFullYear()} Comnecter. All rights reserved.</p>
           <a
             href="#top"
             onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-            style={{ color: colors.accent, textDecoration: 'underline', cursor: 'pointer' }}
+            style={{ color: colors.accent, textDecoration: 'none', fontSize: '0.9rem', fontWeight: 500 }}
           >
             Back to top ↑
           </a>
-        </p>
-        <p style={{ marginTop: '1rem', opacity: 0.8 }}>&copy; {new Date().getFullYear()} Comnecter. All rights reserved.</p>
+        </div>
       </div>
     </footer>
   );
@@ -236,8 +476,11 @@ function App() {
       <MobileStoreBanner />
       <NavBar />
       <Hero />
+      <HowItWorks />
       <Features />
       <Quote />
+      <FAQ />
+      <CTA />
       <Footer />
     </div>
   );

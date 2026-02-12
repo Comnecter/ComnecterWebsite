@@ -14,6 +14,7 @@ const linkStyle = {
   textDecoration: 'none',
   fontWeight: 500,
   fontSize: '0.95rem',
+  transition: 'color 0.2s ease',
 };
 
 export default function NavBar() {
@@ -46,6 +47,7 @@ export default function NavBar() {
         <Link
           to="/"
           style={{
+            fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
             fontSize: '1.4rem',
             fontWeight: 700,
             color: colors.dark,
