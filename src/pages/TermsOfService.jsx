@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import MobileStoreBanner from '../components/MobileStoreBanner';
 
 const colors = {
   primary: '#3E64FF',
@@ -28,6 +29,7 @@ const linkStyle = { color: colors.primary, textDecoration: 'none', fontWeight: 5
 function TermsOfService() {
   return (
     <div style={{ minHeight: '100vh', background: '#fff' }}>
+      <MobileStoreBanner />
       <header
         style={{
           background: `linear-gradient(to right, ${colors.primary}, ${colors.secondary})`,

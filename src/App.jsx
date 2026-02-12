@@ -2,9 +2,9 @@
 // Stack: React + Vite + Framer Motion + React Router
 // Focus: Enhanced UI/UX, Interactive Animations, Audio Feedback
 import React from 'react';
-import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import MobileStoreBanner from './components/MobileStoreBanner';
 
 const colors = {
   primary: '#3E64FF',
@@ -117,6 +117,7 @@ function Footer() {
 function App() {
   return (
     <>
+      <MobileStoreBanner />
       <Header />
       <Footer />
     </>
