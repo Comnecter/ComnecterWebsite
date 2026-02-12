@@ -3,6 +3,7 @@
 // Focus: Enhanced UI/UX, Interactive Animations, Audio Feedback
 import React from 'react';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 const colors = {
@@ -98,8 +99,13 @@ function Footer() {
       <p>Chamber of Commerce: 94191891 | VAT: NL866672291B01</p>
       <p>Email: <a href="mailto:info@comnecter.com" style={{ color: colors.accent, textDecoration: 'none' }}>info@comnecter.com</a></p>
       <p>Phone: <a href="tel:+31687718383" style={{ color: colors.accent, textDecoration: 'none' }}>+31687718383</a></p>
+      <p style={{ marginTop: '1rem' }}>
+        <Link to="/privacy-policy" style={{ color: colors.accent, textDecoration: 'none' }}>Privacy Policy</Link>
+        {' · '}
+        <Link to="/terms-of-service" style={{ color: colors.accent, textDecoration: 'none' }}>Terms of Service</Link>
+      </p>
       <p style={{ marginTop: '1.5rem' }}>
-        <a href="#" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} style={{ color: colors.accent, textDecoration: 'underline', cursor: 'pointer' }}>
+        <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }} style={{ color: colors.accent, textDecoration: 'underline', cursor: 'pointer' }}>
           Back to top ↑
         </a>
       </p>
