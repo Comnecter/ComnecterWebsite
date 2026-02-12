@@ -111,25 +111,23 @@ function Hero() {
           transition={{ delay: 0.6, duration: 0.4 }}
           style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', justifyContent: 'center', alignItems: 'center' }}
         >
-          <motion.a
-            href="https://play.google.com/store/apps/details?id=com.comnecter.mobile.production"
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.98 }}
-            style={{
-              display: 'inline-block',
-              padding: '0.9rem 1.75rem',
-              background: colors.white,
-              color: colors.primary,
-              borderRadius: '0.5rem',
-              fontWeight: 700,
-              textDecoration: 'none',
-              boxShadow: '0 4px 20px rgba(0,0,0,0.2)',
-            }}
-          >
-            Get the app
-          </motion.a>
+          <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
+            <Link
+              to="/get-the-app"
+              style={{
+                display: 'inline-block',
+                padding: '0.9rem 1.75rem',
+                background: colors.white,
+                color: colors.primary,
+                borderRadius: '0.5rem',
+                fontWeight: 700,
+                textDecoration: 'none',
+                boxShadow: '0 4px 20px rgba(0,0,0,0.2)',
+              }}
+            >
+              Get the app
+            </Link>
+          </motion.div>
           <motion.a
             href="#how-it-works"
             whileHover={{ scale: 1.02 }}
@@ -379,26 +377,24 @@ function CTA() {
             <p style={{ fontSize: '1rem', color: colors.textSecondary, marginBottom: '1.5rem', maxWidth: '400px', margin: '0 auto 1.5rem' }}>
               Download Comnecter and start meeting people nearby today.
             </p>
-            <motion.a
-              href="https://play.google.com/store/apps/details?id=com.comnecter.mobile.production"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.98 }}
-              style={{
-                display: 'inline-block',
-                padding: '1rem 2rem',
-                background: colors.primary,
-                color: colors.white,
-                borderRadius: '0.5rem',
-                fontWeight: 700,
-                fontSize: '1.05rem',
-                textDecoration: 'none',
-                boxShadow: '0 4px 14px rgba(37, 99, 235, 0.4)',
-              }}
-            >
-              Get the app
-            </motion.a>
+            <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
+              <Link
+                to="/get-the-app"
+                style={{
+                  display: 'inline-block',
+                  padding: '1rem 2rem',
+                  background: colors.primary,
+                  color: colors.white,
+                  borderRadius: '0.5rem',
+                  fontWeight: 700,
+                  fontSize: '1.05rem',
+                  textDecoration: 'none',
+                  boxShadow: '0 4px 14px rgba(37, 99, 235, 0.4)',
+                }}
+              >
+                Get the app
+              </Link>
+            </motion.div>
           </div>
         </AnimatedSection>
       </div>

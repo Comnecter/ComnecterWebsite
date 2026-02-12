@@ -68,10 +68,8 @@ export default function NavBar() {
         >
           <Link to="/privacy-policy" style={linkStyle}>Privacy</Link>
           <Link to="/terms-of-service" style={linkStyle}>Terms</Link>
-          <a
-            href="https://play.google.com/store/apps/details?id=com.comnecter.mobile.production"
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            to="/get-the-app"
             style={{
               padding: '0.5rem 1rem',
               background: colors.primary,
@@ -83,7 +81,7 @@ export default function NavBar() {
             }}
           >
             Get the app
-          </a>
+          </Link>
         </div>
 
         <button
@@ -133,10 +131,8 @@ export default function NavBar() {
               <Link to="/terms-of-service" onClick={() => setMenuOpen(false)} style={{ ...linkStyle, color: colors.dark, padding: '0.5rem 0' }}>
                 Terms
               </Link>
-              <a
-                href="https://play.google.com/store/apps/details?id=com.comnecter.mobile.production"
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                to="/get-the-app"
                 onClick={() => setMenuOpen(false)}
                 style={{
                   padding: '0.75rem',
@@ -147,10 +143,11 @@ export default function NavBar() {
                   fontWeight: 600,
                   textAlign: 'center',
                   marginTop: '0.25rem',
+                  display: 'block',
                 }}
               >
                 Get the app
-              </a>
+              </Link>
             </div>
           </motion.div>
         )}

@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
-// Update these when your app is live on the stores
 const STORE_CONFIG = {
   androidAvailable: true,
   iosAvailable: true,
-  playStoreUrl: 'https://play.google.com/store/apps/details?id=com.comnecter.mobile.production',
-  appStoreUrl: 'https://apps.apple.com/app/comnecter/id000000000',
 };
 
 function getMobilePlatform() {
@@ -32,14 +30,11 @@ function MobileStoreBanner() {
   if (platform === 'android' && !STORE_CONFIG.androidAvailable) return null;
   if (platform === 'ios' && !STORE_CONFIG.iosAvailable) return null;
 
-  const url = platform === 'android' ? STORE_CONFIG.playStoreUrl : STORE_CONFIG.appStoreUrl;
   const label = platform === 'android' ? 'Get it on Google Play' : 'Download on the App Store';
 
   return (
-    <a
-      href={url}
-      target="_blank"
-      rel="noopener noreferrer"
+    <Link
+      to="/get-the-app"
       style={{
         display: 'block',
         padding: '0.75rem 1rem',
@@ -53,7 +48,7 @@ function MobileStoreBanner() {
       }}
     >
       📱 {label}
-    </a>
+    </Link>
   );
 }
 
