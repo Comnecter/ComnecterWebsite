@@ -159,7 +159,10 @@ function PrivacyPolicy() {
         <h2 style={heading2Style}>13. GDPR Compliance</h2>
         <p>If you are in the European Union, you have additional rights under the General Data Protection Regulation (GDPR). Please contact us for more information about your GDPR rights.</p>
 
-        <p style={{ marginTop: '2.5rem', color: colors.textSecondary, fontSize: '0.95rem' }}>
+        <p style={{ marginTop: '2.5rem' }}>
+          For our commitment to child safety, see our <Link to="/child-safety" style={linkStyle}>Child Safety & Protection Policy</Link>.
+        </p>
+        <p style={{ marginTop: '1.5rem', color: colors.textSecondary, fontSize: '0.95rem' }}>
           <strong>Last Updated:</strong> January 2025
         </p>
       </main>
