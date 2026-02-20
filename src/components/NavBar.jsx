@@ -68,6 +68,7 @@ export default function NavBar() {
         >
           <Link to="/privacy-policy" style={linkStyle}>Privacy</Link>
           <Link to="/terms-of-service" style={linkStyle}>Terms</Link>
+          <Link to="/child-safety" style={linkStyle}>Child Safety</Link>
           <Link
             to="/get-the-app"
             style={{
@@ -130,6 +131,9 @@ export default function NavBar() {
               </Link>
               <Link to="/terms-of-service" onClick={() => setMenuOpen(false)} style={{ ...linkStyle, color: colors.dark, padding: '0.5rem 0' }}>
                 Terms
+              </Link>
+              <Link to="/child-safety" onClick={() => setMenuOpen(false)} style={{ ...linkStyle, color: colors.dark, padding: '0.5rem 0' }}>
+                Child Safety
               </Link>
               <Link
                 to="/get-the-app"

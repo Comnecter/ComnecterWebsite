@@ -4,6 +4,7 @@ import ResetPassword from "./ResetPassword";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import GetTheApp from "./pages/GetTheApp";
+import ChildSafety from "./pages/ChildSafety";
 import { createBrowserRouter } from "react-router";
 
 export const router = createBrowserRouter([
@@ -26,5 +27,9 @@ export const router = createBrowserRouter([
     {
         path: "/get-the-app",
         element: <GetTheApp />,
+    },
+    {
+        path: "/child-safety",
+        element: <ChildSafety />,
     },
 ]);

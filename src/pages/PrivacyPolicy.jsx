@@ -178,6 +178,8 @@ function PrivacyPolicy() {
           {' · '}
           <Link to="/terms-of-service" style={{ color: colors.accent, textDecoration: 'none' }}>Terms of Service</Link>
           {' · '}
+          <Link to="/child-safety" style={{ color: colors.accent, textDecoration: 'none' }}>Child Safety</Link>
+          {' · '}
           <Link to="/" style={{ color: colors.accent, textDecoration: 'none' }}>Home</Link>
         </p>
         <p>&copy; {new Date().getFullYear()} Comnecter. All rights reserved.</p>

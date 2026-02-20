@@ -449,6 +449,9 @@ function Footer() {
             <p style={{ margin: '0.25rem 0 0' }}>
               <Link to="/terms-of-service" style={{ color: colors.accent, textDecoration: 'none', fontSize: '0.9rem' }}>Terms of Service</Link>
             </p>
+            <p style={{ margin: '0.25rem 0 0' }}>
+              <Link to="/child-safety" style={{ color: colors.accent, textDecoration: 'none', fontSize: '0.9rem' }}>Child Safety</Link>
+            </p>
           </div>
         </div>
         <div style={{ paddingTop: '1.5rem', borderTop: '1px solid rgba(255,255,255,0.1)', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '1rem' }}>
