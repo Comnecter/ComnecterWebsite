@@ -39,10 +39,13 @@ function ChildSafety() {
         <p>
           Comnecter is committed to protecting children and preventing any form of child sexual abuse and exploitation (CSAE). We maintain a zero-tolerance policy toward any content or behavior that endangers minors.
         </p>
+        <p>
+          This policy forms part of Comnecter’s published Community Standards and applies to all users of the Comnecter platform.
+        </p>
 
         <h2 style={heading2Style}>1. Zero-Tolerance Policy</h2>
         <p>
-          Comnecter strictly prohibits the use of the app for any activity involving child sexual abuse or exploitation, including but not limited to:
+          Comnecter strictly prohibits the use of the Comnecter platform for any activity involving child sexual abuse or exploitation, including but not limited to:
         </p>
         <ul style={listStyle}>
           <li>Creating, uploading, sharing, or distributing child sexual abuse material (CSAM)</li>
@@ -75,10 +78,13 @@ function ChildSafety() {
           <li>Preserve evidence as required by law</li>
           <li>Report the incident to the National Center for Missing & Exploited Children (NCMEC) or the relevant regional authority</li>
         </ul>
+        <p>
+          Comnecter complies with applicable child safety laws and regulations in jurisdictions where the service operates.
+        </p>
 
         <h2 style={heading2Style}>3. Reporting Child Safety Concerns</h2>
         <p>
-          Users can report suspected child exploitation or unsafe behavior through:
+          Comnecter provides in-app reporting tools that allow users to report suspected child exploitation or unsafe behavior through:
         </p>
         <ul style={listStyle}>
           <li>In-app reporting tools</li>
