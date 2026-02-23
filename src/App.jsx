@@ -180,7 +180,7 @@ function Hero() {
 
 const steps = [
   { step: '1', title: 'Open the app', text: 'Allow location (you stay in control). Comnecter shows you who’s nearby in a safe, transparent way.' },
-  { step: '2', title: 'See who’s around', text: 'Browse nearby people and their interests. No spam—just real profiles of people in your area.' },
+  { step: '2', title: 'See who’s around', text: 'Browse nearby people and their interests. No spam,just real profiles of people in your area.' },
   { step: '3', title: 'Connect in person', text: 'Send a request, chat in the app, and meet up. Turn online connection into real friendship.' },
 ];
 
@@ -243,7 +243,7 @@ function HowItWorks() {
 }
 
 const features = [
-  { title: 'Real-time radar', description: 'See who’s nearby in a safe, transparent way. No guessing—just real people around you.', icon: '🔍' },
+  { title: 'Real-time radar', description: 'See who’s nearby in a safe, transparent way. No guessing,just real people around you.', icon: '🔍' },
   { title: 'Natural networking', description: 'Build friendships through mutual interests and local discovery, not endless scrolling.', icon: '🤝' },
   { title: 'Mobile-first', description: 'Designed for life on the go. Use it anywhere, anytime.', icon: '📱' },
   { title: 'Privacy-first', description: 'You control what you share. We keep your data safe and minimal.', icon: '🔒' },
@@ -308,7 +308,7 @@ function Quote() {
             “A bridge between online and offline connection.”
           </blockquote>
           <p style={{ marginTop: '1rem', fontSize: '0.95rem', opacity: 0.9, fontStyle: 'italic' }}>
-            — The Comnecter Team
+            , The Comnecter Team
           </p>
         </AnimatedSection>
       </div>
@@ -420,7 +420,7 @@ function SoftwareServices() {
               Custom software for your business
             </h2>
             <p style={{ fontSize: '1rem', color: colors.textSecondary, lineHeight: 1.6, maxWidth: '560px', margin: '0 auto 1.25rem' }}>
-              We develop and provide all kinds of software for our clients. From apps to platforms—reach out to discuss your project.
+              We develop and provide all kinds of software for our clients. From apps to platforms,reach out to discuss your project.
             </p>
             <p style={{ margin: 0 }}>
               <a href="mailto:hello@comnecter.com" style={{ color: colors.primary, fontWeight: 600, textDecoration: 'none', fontSize: '1.05rem' }}>
