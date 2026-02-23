@@ -402,6 +402,38 @@ function CTA() {
   );
 }
 
+function SoftwareServices() {
+  return (
+    <section style={{ ...sectionPad, background: colors.white }}>
+      <div style={container}>
+        <AnimatedSection>
+          <div
+            style={{
+              textAlign: 'center',
+              padding: '3rem 2rem',
+              background: colors.lightBg,
+              borderRadius: '1.25rem',
+              border: '1px solid rgba(0,0,0,0.06)',
+            }}
+          >
+            <h2 style={{ fontSize: 'clamp(1.35rem, 2.5vw, 1.75rem)', fontWeight: 700, color: colors.textPrimary, marginBottom: '0.75rem' }}>
+              Custom software for your business
+            </h2>
+            <p style={{ fontSize: '1rem', color: colors.textSecondary, lineHeight: 1.6, maxWidth: '560px', margin: '0 auto 1.25rem' }}>
+              We develop and provide all kinds of software for our clients. From apps to platforms—reach out to discuss your project.
+            </p>
+            <p style={{ margin: 0 }}>
+              <a href="mailto:hello@comnecter.com" style={{ color: colors.primary, fontWeight: 600, textDecoration: 'none', fontSize: '1.05rem' }}>
+                hello@comnecter.com
+              </a>
+            </p>
+          </div>
+        </AnimatedSection>
+      </div>
+    </section>
+  );
+}
+
 function Footer() {
   return (
     <footer
@@ -480,6 +512,7 @@ function App() {
       <Quote />
       <FAQ />
       <CTA />
+      <SoftwareServices />
       <Footer />
     </div>
   );
